@@ -35,6 +35,12 @@ set :pty, true
 # set :keep_releases, 5
 
 namespace :deploy do
+  %w[start stop restart].each do |command|
+    desc "#{command} unicorn server"
+    task command, roles: :app, except: {no_release: true} do
+      run "/etc/init.d/unicorn_#{application} #{command}"
+    end
+  end
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
@@ -42,8 +48,9 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-      execute "sudo service unicorn restart"
     end
   end
 
+  after :deploy, "deploy:restart"
+  after :rollback, "deploy:restart"
 end
