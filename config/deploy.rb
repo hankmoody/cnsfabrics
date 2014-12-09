@@ -35,13 +35,6 @@ set :pty, true
 # set :keep_releases, 5
 
 namespace :deploy do
-  %w[start stop restart].each do |command|
-    desc "#{command} unicorn server"
-    task command, roles: :app, except: {no_release: true} do
-      run "/etc/init.d/unicorn_#{application} #{command}"
-    end
-  end
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -50,7 +43,13 @@ namespace :deploy do
       # end
     end
   end
-
-  after :deploy, "deploy:restart"
-  after :rollback, "deploy:restart"
 end
+
+desc "restart unicorn server"
+task "restart_unicorn" do
+  on roles(:all) do
+    execute "sudo service unicorn restart"
+  end
+end
+
+after :deploy, "restart_unicorn"
