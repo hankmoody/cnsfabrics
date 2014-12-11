@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+
+fabric_array = []
+for i in 0..20
+  fabric_array.push({
+    code: "Cns#{i}",
+    width: 44,
+    quantity: 105
+  })
+end
+
+fabrics = Fabric.create(fabric_array)

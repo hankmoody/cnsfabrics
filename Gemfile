@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 gem 'mongoid', '~> 4.0.0'
 gem 'bson_ext'
+gem 'guard-rspec'
+gem 'rspec-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -37,10 +39,12 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Use Capistrano for deployment
-gem 'capistrano', group: :development
-gem 'capistrano-bundler', group: :development
-gem 'capistrano-rvm', group: :development
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
+  gem 'factory_girl_rails'
+end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
