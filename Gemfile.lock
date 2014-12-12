@@ -27,6 +27,10 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    autoprefixer-rails (4.0.2.1)
+      execjs
+    bootstrap-sass (3.3.1.0)
+      sass (~> 3.2)
     bson (2.3.0)
     bson_ext (1.5.1)
     builder (3.1.4)
@@ -208,6 +212,8 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  autoprefixer-rails
+  bootstrap-sass
   bson_ext
   capistrano
   capistrano-bundler

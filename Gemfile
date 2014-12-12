@@ -6,6 +6,8 @@ gem 'mongoid', '~> 4.0.0'
 gem 'bson_ext'
 gem 'guard-rspec'
 gem 'rspec-rails'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
