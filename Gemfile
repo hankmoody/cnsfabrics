@@ -8,6 +8,8 @@ gem 'guard-rspec'
 gem 'rspec-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'mongoid-paperclip', :require => "mongoid_paperclip"
+gem 'aws-sdk'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -46,6 +48,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 # Use debugger

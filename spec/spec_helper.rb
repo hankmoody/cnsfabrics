@@ -83,4 +83,14 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.before :each do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.start
+  end
+
+  config.after do
+    DatabaseCleaner.clean
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/system/fabrics"])
+  end
 end
