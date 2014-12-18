@@ -5,5 +5,6 @@ FactoryGirl.define do
     code "Cns1234"
     width 44
     quantity 105
+    image File.new(Rails.root + 'spec/support/images/test_image.png')
   end
 end
