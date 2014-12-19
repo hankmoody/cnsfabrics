@@ -2,15 +2,20 @@ class Fabric
   include Mongoid::Document
   include Mongoid::Paperclip
   include Mongoid::Timestamps
+  extend StorageSelector
 
   field :code, type: String
   field :quantity, type: Integer
   field :width, type: Integer
 
-  has_mongoid_attached_file :image, :styles => {
-    thumbnail: "200x200>",
-    big: "850x500>"
+  paperclip_options = {
+    :styles => {
+      thumbnail: "200x200>",
+      big: "850x500>"
+    }
   }
+
+  has_mongoid_attached_file :image, storage_selector.merge(paperclip_options)
 
   validates_presence_of :code
   validates_uniqueness_of :code

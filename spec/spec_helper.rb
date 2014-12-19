@@ -91,6 +91,6 @@ RSpec.configure do |config|
 
   config.after do
     DatabaseCleaner.clean
-    FileUtils.rm_rf(Dir["#{Rails.root}/public/system/fabrics"])
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/system/images"])
   end
 end
