@@ -4,12 +4,11 @@ source 'https://rubygems.org'
 gem 'rails', '4.1'
 gem 'mongoid', '~> 4.0.0'
 gem 'bson_ext'
-gem 'guard-rspec'
-gem 'rspec-rails'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 gem 'aws-sdk'
+gem 'devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -49,6 +48,9 @@ group :development, :test do
   gem 'capistrano-rvm'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'capybara'
 end
 
 # Use debugger
