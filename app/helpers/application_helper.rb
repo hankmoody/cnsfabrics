@@ -15,4 +15,9 @@ module ApplicationHelper
     end
   end
 
+  def rename_file (old_file, new_file)
+    File.rename(old_file, new_file)
+    new_file
+  end
+
 end

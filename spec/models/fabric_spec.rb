@@ -20,4 +20,9 @@ describe Fabric do
     expect(fabric.image_updated_at).not_to be_nil
   end
 
+  it "should auto downcase code before saving" do
+    fabric = create(:fabric, :code => "CNS 123")
+    expect(fabric.code).to eq "cns 123"
+  end
+
 end

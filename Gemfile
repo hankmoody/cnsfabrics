@@ -9,6 +9,7 @@ gem 'autoprefixer-rails'
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 gem 'aws-sdk'
 gem 'devise'
+gem 'roo'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'

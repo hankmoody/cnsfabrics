@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-4">
+    <h2>Admin Panel</h2>
+    <%= form_tag({action: :excel_update, controller: :fabrics}, multipart: true) do %>
+      <div class='form-group'>
+        <%= label_tag(:excel_file, 'Select Excel file') %>
+        <%= file_field_tag :excel_file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' %>
+      </div>
+      <div class='form-group'>
+        <%= submit_tag 'Submit', class: 'btn btn-default' %>
+      </div>
+    <% end %>
+  </div>
+</div>
