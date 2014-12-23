@@ -18,4 +18,9 @@ feature 'Admin Page' do
     click_button "Sign in"
     expect(page).not_to have_content 'Admin Panel'
   end
+
+  scenario "is not accessible if the user is not signed in" do
+    visit admin_path
+    expect(current_path).to eq(new_user_session_path)
+  end
 end

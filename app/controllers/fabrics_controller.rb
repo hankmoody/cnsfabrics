@@ -1,4 +1,5 @@
 class FabricsController < ApplicationController
+  before_filter :authenticate_user!
 
   def excel_update
     @status = []
