@@ -3,4 +3,5 @@ log/*
 tmp
 .sass-cache/
 config/aws.yml
+config/dropbox.yml
 public/system/*

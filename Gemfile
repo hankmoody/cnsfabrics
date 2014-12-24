@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'capybara'
+  gem 'therubyracer'
 end
 
 # Use debugger
