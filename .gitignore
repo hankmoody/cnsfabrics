@@ -3,3 +3,4 @@ log/*
 tmp
 .sass-cache/
 config/aws.yml
+public/system/*

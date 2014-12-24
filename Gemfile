@@ -10,6 +10,8 @@ gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 gem 'aws-sdk'
 gem 'devise'
 gem 'roo'
+gem 'dropbox-sdk', :require => "dropbox_sdk"
+gem 'kaminari'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'

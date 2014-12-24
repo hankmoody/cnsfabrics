@@ -8,11 +8,12 @@
 #
 
 fabric_array = []
-for i in 0..20
+for i in 0..40
   fabric_array.push({
     code: "Cns#{i}",
     width: 44,
-    quantity: 105
+    quantity: 105,
+    image: 'http://fakeimg.pl/300x260'
   })
 end
 

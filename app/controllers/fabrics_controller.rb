@@ -2,6 +2,7 @@ class FabricsController < ApplicationController
   before_filter :authenticate_user!
 
   def excel_update
+    @dbox = DropboxBridge.new
     @status = []
     file = view_context.rename_file(params[:excel_file].path,
                                     params[:excel_file].path + '.xlsx')

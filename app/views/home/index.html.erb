@@ -1,10 +1,11 @@
 <div class="fabric-thumbnails">
   <div class="row">
-    <% Fabric.all.each do |fabric| %>
+    <% @fabrics.each do |fabric| %>
       <div class="col-xs-6 col-sm-4 col-md-3">
         <div class="thumbnail box-shadow">
           <a href="#">
-            <img src="http://cbsphilly.files.wordpress.com/2012/05/shopping-style-fabric-stores-rolls-of-fabric.jpg">
+            <% img = fabric.image.nil? ? 'http://fakeimg.pl/200x200/' : fabric.image.url(:thumbnail) %>
+            <%= image_tag 'http://fakeimg.pl/300x260/' %>
           </a>
           <div class="row">
             <div class="col-xs-6 card-info">
@@ -25,5 +26,6 @@
         </div>
       </div>
     <% end %>
+    <%= paginate @fabrics %>
   </div>
 </div>

@@ -1,0 +1,6 @@
+production: &keys
+  access_token: neEFJ_lkcCkAAAAAAAAN66KkgBC_1FLOET8TvXoLH2h2Op9MTSB3xFSdUkc84XcN
+
+development: *keys
+
+test: *keys
