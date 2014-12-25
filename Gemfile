@@ -45,6 +45,10 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
+group :production do
+  gem 'unicorn-worker-killer'
+end
+
 group :development, :test do
   gem 'capistrano', '3.3.3'
   gem 'capistrano-bundler'
