@@ -36,13 +36,14 @@ set :pty, true
 
 # before "deploy:assets:precompile", 'deploy:symlink_shared'
 
-# namespace :deploy do
-  # task :symlink_shared do
-    # on roles(:all) do
-      # execute "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-    # end
-  # end
-# end
+namespace :deploy do
+  task :symlink_shared do
+    on roles(:all) do
+      execute "ln -nfs #{shared_path}/config/dropbox.yml #{release_path}/config/dropbox.yml"
+      execute "ln -nfs #{shared_path}/config/aws.yml #{release_path}/config/aws.yml"
+    end
+  end
+end
 
 namespace :deploy do
   after :restart, :clear_cache do
@@ -62,5 +63,5 @@ task "restart_unicorn" do
   end
 end
 
-# before :deploy, "deploy:symlink_shared"
+after :deploy, "deploy:symlink_shared"
 after :deploy, "restart_unicorn"
