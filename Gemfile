@@ -46,7 +46,7 @@ end
 # gem 'unicorn'
 
 group :development, :test do
-  gem 'capistrano'
+  gem 'capistrano', '3.3.3'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
   gem 'factory_girl_rails'

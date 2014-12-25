@@ -34,6 +34,16 @@ set :pty, true
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+# before "deploy:assets:precompile", 'deploy:symlink_shared'
+
+# namespace :deploy do
+  # task :symlink_shared do
+    # on roles(:all) do
+      # execute "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    # end
+  # end
+# end
+
 namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
@@ -52,4 +62,5 @@ task "restart_unicorn" do
   end
 end
 
+# before :deploy, "deploy:symlink_shared"
 after :deploy, "restart_unicorn"
