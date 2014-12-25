@@ -7,11 +7,11 @@ gem 'bson_ext'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
-# gem 'aws-sdk'
+gem 'aws-sdk'
 gem 'devise'
-# gem 'roo'
-# gem 'dropbox-sdk', :require => "dropbox_sdk"
-# gem 'kaminari'
+gem 'roo'
+gem 'dropbox-sdk', :require => "dropbox_sdk"
+gem 'kaminari'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
