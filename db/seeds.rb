@@ -7,14 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
+Fabric.delete_all
+User.delete_all
+
 fabric_array = []
 for i in 0..40
   fabric_array.push({
-    code: "Cns#{i}",
-    width: 44,
-    quantity: 105,
-    image: 'http://fakeimg.pl/300x260'
+    code: "Cns #{i+100}",
+    width: rand(20..100),
+    quantity: rand(500..10000),
+    image: URI.parse("http://placehold.it/#{rand(600..1000)}x#{rand(500..900)}.png")
   })
 end
 
-fabrics = Fabric.create(fabric_array)
+Fabric.create!(fabric_array)

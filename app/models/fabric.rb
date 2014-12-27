@@ -12,8 +12,12 @@ class Fabric
 
   paperclip_options = {
     :styles => {
-      thumbnail: "200x200>",
-      big: "850x500>"
+      thumbnail: "",
+      big: "",
+    },
+    :convert_options => {
+      :thumbnail => "-gravity Center -crop 600x500+0+0 +repage -resize '240>'",
+      :big => "-gravity Center -crop 600x500+0+0 +repage -resize '500>'"
     }
   }
 
@@ -21,6 +25,7 @@ class Fabric
 
   validates_presence_of :code
   validates_uniqueness_of :code
+  validates :image, :dimensions => { :width => 600, :height => 500 }
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 

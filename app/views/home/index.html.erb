@@ -4,8 +4,8 @@
       <div class="col-xs-6 col-sm-4 col-md-3">
         <div class="thumbnail box-shadow">
           <a href="#">
-            <% img = fabric.image.nil? ? 'http://fakeimg.pl/200x200/' : fabric.image.url(:thumbnail) %>
-            <%= image_tag 'http://fakeimg.pl/300x260/' %>
+            <% img = fabric.image.nil? ? 'http://fakeimg.pl/300x250/' : fabric.image.url(:thumbnail) %>
+            <%= image_tag img %>
           </a>
           <div class="row">
             <div class="col-xs-6 card-info">
