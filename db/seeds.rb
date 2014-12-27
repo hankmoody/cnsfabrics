@@ -21,3 +21,6 @@ for i in 0..40
 end
 
 Fabric.create!(fabric_array)
+User.create!(:email => "ashishgupta13@gmail.com",
+             :password => "admin1234",
+             :admin => true)
