@@ -16,7 +16,8 @@ module StorageSelector
         :s3_credentials => "#{Rails.root}/config/aws.yml",
         :path           => ":class/:attachment/:id/:style.:extension",
         :s3_protocol    => 'https',
-        :bucket         => 'cnsbucket'
+        :bucket         => 'cnsbucket',
+        :s3_host_name   => 's3-ap-southeast-1.amazonaws.com'
       }
     end
   end

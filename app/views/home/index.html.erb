@@ -1,5 +1,10 @@
 <div class="fabric-thumbnails">
   <div class="row">
+    <div class="col-md-4">
+      <%= paginate @fabrics %>
+    </div>
+  </div>
+  <div class="row">
     <% @fabrics.each do |fabric| %>
       <div class="col-xs-6 col-sm-4 col-md-3">
         <div class="thumbnail box-shadow">
@@ -26,6 +31,10 @@
         </div>
       </div>
     <% end %>
-    <%= paginate @fabrics %>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <%= paginate @fabrics %>
+    </div>
   </div>
 </div>
