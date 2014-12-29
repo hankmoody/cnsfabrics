@@ -1,0 +1,15 @@
+<div class="row search-bar">
+  <%= form_tag({:controller => 'home', :action => 'index'}, {:method => 'get'}) %>
+    <div class="col-md-offset-4 col-md-4 col-xs-6">
+      <div class="form-group">
+        <%= text_field_tag :search, params[:search],
+          :id => 'search_field',
+          :class => 'form-control',
+          :placeholder => 'Search for...' %>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-6">
+      <%= submit_tag "Search", :class => 'btn btn-default', :name => nil %> 
+    </div>
+  <% form_tag %>
+</div>

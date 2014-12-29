@@ -35,4 +35,11 @@ class Fabric
     self.code = self.code.downcase
   end
 
+  def self.search (search)
+    search_conditions = Regexp.new "#{search}"
+    Fabric.any_of({
+      :code => search_conditions
+    })
+  end
+
 end
