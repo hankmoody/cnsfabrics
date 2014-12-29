@@ -1,6 +1,7 @@
 module FabricHelper
 
   def process_record (record)
+    normalize record
     fabric = Fabric.find_by code: record[:code]
     if fabric.nil?
       add_record record
@@ -33,5 +34,9 @@ module FabricHelper
     image_file.open()
     record[:image] = image_file
     image_file
+  end
+
+  def normalize (record)
+    record[:code] = record[:code].downcase
   end
 end

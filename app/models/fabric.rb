@@ -8,7 +8,7 @@ class Fabric
   field :quantity, type: Integer
   field :width, type: Integer
 
-  before_create :drop_case
+  before_validation :drop_case
 
   paperclip_options = {
     :styles => {

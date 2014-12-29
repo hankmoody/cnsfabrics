@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     else
       @fabrics = Fabric.search(params[:search])
     end
-    @fabrics = @fabrics.order(created_as: :desc).page(params[:page]).per(24)
+    @fabrics = @fabrics.order_by(:created_at.desc).page(params[:page]).per(24)
   end
 
   def admin

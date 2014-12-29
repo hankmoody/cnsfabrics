@@ -10,6 +10,7 @@ class FabricsController < ApplicationController
       sheet = FabricSheetReader.new(file)
       records = sheet.read_fabric_data
       records.each do |record|
+        Rails.logger.debug "Now processing #{record.inspect}"
         view_context.process_record record
       end
     rescue => e
