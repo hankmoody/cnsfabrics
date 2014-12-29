@@ -4,39 +4,30 @@ module FabricHelper
     normalize record
     fabric = Fabric.find_by code: record[:code]
     if fabric.nil?
-      add_record record
+      job_id = AddFabricWorker.perform_async(record)
+      @jobs[job_id] = record[:code]
     else
       update_record fabric, record
     end
   end
 
-  def add_record (record)
-    image_file = add_image_path_to record
-    fabric = Fabric.new record
-    if fabric.save
-      @status << { :success => "#{record[:code]} added successfully." }
-    else
-      @status << { :danger => "#{record[:code]} failed with error " + fabric.errors.messages.inspect }
-    end
-    image_file.unlink
-  end
-
   def update_record (fabric, record)
+    code = record[:code]
     if fabric.update_attributes record
-      @status << { :success => "#{record[:code]} was updated successfully." }
+      @update_status[code] = log_status('success', 'Updated Successfully')
     else
-      @status << { :danger => "#{record[:code]} failed with error " + fabric.errors.messages.inspect }
+      @update_status[code] = log_status('danger', 'Failed with ' + fabric.errors.messages.inspect)
     end
-  end
-
-  def add_image_path_to (record)
-    image_file = @dbox.get_file record[:code]
-    image_file.open()
-    record[:image] = image_file
-    image_file
   end
 
   def normalize (record)
     record[:code] = record[:code].downcase
+  end
+
+  def log_status (status, message)
+    {
+      :status_code    => status,
+      :status_message => message
+    }
   end
 end

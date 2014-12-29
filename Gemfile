@@ -12,6 +12,8 @@ gem 'devise'
 gem 'roo'
 gem 'dropbox-sdk', :require => "dropbox_sdk"
 gem 'kaminari'
+gem 'sidekiq'
+gem 'sidekiq-status', github: 'utgarda/sidekiq-status'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -53,6 +55,7 @@ group :development, :test do
   gem 'capistrano', '3.3.3'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'rspec-rails'

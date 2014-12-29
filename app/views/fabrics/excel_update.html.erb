@@ -1,12 +1,87 @@
 <div class="row">
-  <div class="col-md-6">
-    <h2>Upload Results</h2>
+  <div class="col-md-8">
+    <h3>Adding New Designs</h3>
     <table class="table table-striped">
-      <% @status.each do |s| %>
-        <tr class="<%= s.keys.first.to_s %>">
-          <td><%= s.values.first %></td>
+      <thead>
+        <tr>
+          <th>Design</th>
+          <th>Status</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% codes = @jobs.values %>
+        <% codes.each do |c| %>
+          <tr id="<%= c.gsub(/\s+/, '_') %>">
+            <td class='col-lg-2 col-md-2 col-sm-2 col-xs-2'><%= c %></td>
+            <td class='job-status'>Processing...</td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Updating existing designs</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Design</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @update_status.each do |code, value| %>
+          <tr id="<%= code.gsub(/\s+/, '_') %>" class="<%= value[:status_code]%>">
+            <td class='col-lg-2 col-md-2 col-sm-2 col-xs-2'><%= code %></td>
+            <td class='job-status'><%= value[:status_message]%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  var jobPoller = function(jobs) {
+
+    function getIdFrom(code) {
+      return '#'+code.replace(' ', '_');
+    }
+
+    function updateRow(code, data) { 
+      codeId = getIdFrom(code);
+      $(codeId+' td.job-status').text(data.message);
+      $(codeId).removeClass().addClass(data.status);
+    }
+
+    function pollJob(jobId, code) {
+      function poll() {
+        $.ajax({
+          type: "GET",
+          url: "/admin/fetch/?job_id=" + jobId,
+          dataType: 'json',
+          statusCode: {
+            200: function(data) { updateRow(code, data); },
+            500: function(data) { updateRow(code, data); },
+            202: function(data) {
+              updateRow(code, data);
+              setTimeout(poll, pollEvery); }
+          }
+        });
+      }
+      var pollEvery = 100; // milliseconds
+      poll();
+    }
+
+    var $result = $('#result');
+    for (var jobId in jobs) {
+      pollJob(jobId, jobs[jobId]);
+    }
+  };
+
+  jobs = <%= raw @jobs.to_json %>
+  jobPoller(jobs);
+<% end %>
+
