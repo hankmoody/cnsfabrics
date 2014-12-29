@@ -24,9 +24,16 @@ div.thumbnail
   padding: 10px;
 }
 
-.card-info
+.card-thumbnail
 {
-  margin: 5px 0;
+  margin-bottom: 5px;
+}
+
+div.card-info
+{
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: 3px;
 }
 
 div.search-bar

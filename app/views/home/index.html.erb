@@ -11,22 +11,21 @@
         <div class="thumbnail box-shadow">
           <a href="#">
             <% img = fabric.image.nil? ? 'http://fakeimg.pl/300x250/' : fabric.image.url(:thumbnail) %>
-            <%= image_tag img %>
+            <%= image_tag img, :class => 'card-thumbnail' %>
           </a>
-          <div class="row">
-            <div class="col-xs-6 card-info">
-              #<%=fabric.code%>
+          <div class="row card-info">
+            <div class="col-xs-6">
+              <strong><span class="text-uppercase text-nowrap small">#<%=fabric.code%></span></strong>
             </div>
-            <div class="col-xs-6 card-info text-right">
-              <%=fabric.quantity%> Mts
+            <div class="col-xs-6 text-right">
+              <span class="text-nowrap"><%=fabric.quantity%> Mts</span>
             </div>
           </div>
-          <div class="row">
+          <div class="row card-info">
             <div class="col-xs-6">
               <%=fabric.width %>"
             </div>
             <div class="col-xs-6 text-right">
-              Powerloom
             </div>
           </div>
         </div>
