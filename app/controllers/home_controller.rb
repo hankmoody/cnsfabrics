@@ -2,7 +2,8 @@ class HomeController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
 
   def index
-    if params[:search].nil? || params[:search].empty?
+    @search = !params[:search].nil? && !params[:search].empty?
+    if ! @search
       @fabrics = Fabric
     else
       @fabrics = Fabric.search(params[:search])

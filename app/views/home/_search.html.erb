@@ -1,6 +1,17 @@
+<% if @search %>
+  <div class="row search-bar">
+    <div class="col-xs-6">
+      <a href='<%= root_path %>' class='btn btn-default' style='color: #555'>
+        <span class='glyphicon glyphicon-arrow-left'></span>
+        Go Back
+      </a>
+    </div>
+  </div>
+<% end %>
+
 <div class="row search-bar">
   <%= form_tag({:controller => 'home', :action => 'index'}, {:method => 'get'}) %>
-    <div class="col-md-offset-4 col-md-4 col-xs-6">
+    <div class="col-md-offset-3 col-md-5 col-xs-6">
       <div class="form-group">
         <%= text_field_tag :search, params[:search],
           :id => 'search_field',
