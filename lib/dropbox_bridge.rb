@@ -16,7 +16,7 @@ class DropboxBridge
   def find_file (file)
     path = nil
     results = @client.search(@root_path, file)
-    if results.empty? || results.nil?
+    if results.empty? || results.nil? || results.count > 1
       raise "#{file} not found in the images folder"
     else
       path = results.first["path"]
