@@ -35,6 +35,7 @@ set :pty, true
 # set :keep_releases, 5
 
 # before "deploy:assets:precompile", 'deploy:symlink_shared'
+set :sidekiq_log, "#{deploy_to}/shared/log/sidekiq.log"
 
 namespace :deploy do
   task :symlink_shared do

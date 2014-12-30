@@ -37,7 +37,7 @@ class AddFabricWorker
     begin
       dbox = DropboxBridge.new
       image = dbox.get_file record["code"]
-    rescue
+    rescue Exception => e
       log_status 'danger', e.to_s
       return nil
     end
