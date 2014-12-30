@@ -1,6 +1,11 @@
 class FabricsController < ApplicationController
   before_filter :authenticate_user!
 
+  def destroy
+    Fabric.find(params[:id]).destroy
+    redirect_to root_path
+  end
+
   def excel_update
     @jobs = {}
     @update_status = {}

@@ -1,3 +1,4 @@
+<%= render 'delete_confirmation' %>
 <div class="fabric-thumbnails">
   <%= render 'search' %>
   <div class="row">
@@ -26,6 +27,11 @@
               <%=fabric.width %>"
             </div>
             <div class="col-xs-6 text-right">
+              <%= link_to '',
+                '#',
+                :style => 'text-decoration: none; color: maroon',
+                :data => {toggle: 'modal', target: '.delete-modal', url: fabric_path(fabric.id), code: fabric.code },
+                :class => 'glyphicon glyphicon-trash' %>
             </div>
           </div>
         </div>
@@ -38,3 +44,4 @@
     </div>
   </div>
 </div>
+
