@@ -27,11 +27,14 @@
               <%=fabric.width %>"
             </div>
             <div class="col-xs-6 text-right">
-              <%= link_to '',
-                '#',
-                :style => 'text-decoration: none; color: maroon',
-                :data => {toggle: 'modal', target: '.delete-modal', url: fabric_path(fabric.id), code: fabric.code },
-                :class => 'glyphicon glyphicon-trash' %>
+              <% if current_user && current_user.admin? %>
+                <%= link_to '',
+                  '#',
+                  :style => 'text-decoration: none; color: maroon',
+                  :data => {toggle: 'modal', target: '.delete-modal', url: fabric_path(fabric.id), code: fabric.code },
+                  :class => 'glyphicon glyphicon-trash'
+                %>
+              <% end %>
             </div>
           </div>
         </div>
