@@ -6,6 +6,7 @@ class FabricSheetReader
   end
 
   def read_fabric_data
+    @code_map = {}
     records = []
     for i in 2..@file.last_row
       record = {}
@@ -28,6 +29,12 @@ class FabricSheetReader
   def validate_record (record, row)
     if record[:code].nil? || record[:code].empty?
       raise "Row #{row}: Code cannot be empty!"
+    end
+    code = record[:code]
+    if @code_map.has_key? code
+      raise "Duplicate design '#{code}' found in rows #{row} and #{@code_map[code]}!"
+    else
+      @code_map[code] = row
     end
   end
 

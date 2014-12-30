@@ -44,4 +44,9 @@ describe 'Fabric Sheet Reader' do
     sheet_reader = FabricSheetReader.new(excel_repo + 'sheet_empty_code.xlsx')
     expect{sheet_reader.read_fabric_data}.to raise_error
   end
+
+  it 'fails if any of the rows have a duplicate code' do
+    sheet_reader = FabricSheetReader.new(excel_repo + 'sheet_duplicate_code.xlsx')
+    expect{sheet_reader.read_fabric_data}.to raise_error
+  end
 end
