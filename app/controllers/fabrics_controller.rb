@@ -28,6 +28,11 @@ class FabricsController < ApplicationController
       render :status => 200, :json => job_status
     elsif Sidekiq::Status::failed? job_id
       render :status => 500, :json => job_status
+    elsif Sidekiq::Status::queued? job_id
+      render :status => 202, :json => {
+        :message => 'Job queued...',
+        :status => 'info'
+      }
     else
       render :status => 202, :json => job_status
     end
