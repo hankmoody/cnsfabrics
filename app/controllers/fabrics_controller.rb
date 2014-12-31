@@ -1,5 +1,9 @@
 class FabricsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
+
+  def show
+    @fabric = Fabric.find(params[:id])
+  end
 
   def destroy
     Fabric.find(params[:id]).destroy

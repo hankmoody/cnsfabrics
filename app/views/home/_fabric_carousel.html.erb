@@ -1,0 +1,64 @@
+<div class="modal" id="fabric-modal" tabindex="-1" role="dialog" aria-labelledby="fabric-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class='owl-carousel'>
+          <% @fabrics.each do |fabric| %>
+            <div>
+              <div class='thumbnail'>
+                <%= image_tag fabric.image.url(:big) %>
+              </div>
+              <div class='row'>
+                <div class='col-xs-12'>
+                  <table class='table table-striped'>
+                    <colgroup>
+                      <col style='width:120px;'>
+                      <col>
+                    </colgroup>
+                    <tr>
+                      <td><strong>Design No.</strong></td>
+                      <td class='text-uppercase'><strong>#<%= fabric.code %><strong></td>
+                    </tr>
+                    <tr><td>Quantity</td><td><%= fabric.quantity %> mts</td></tr>
+                    <tr><td>Width</td><td><%= fabric.width %>"</td></tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $('.owl-carousel').owlCarousel({
+    singleItem: true,
+    navigation: true,
+    navigationText: [
+      "<i class='glyphicon glyphicon-chevron-left'></i>",
+      "<i class='glyphicon glyphicon-chevron-right'></i>"
+    ],
+    lazyLoad: true
+  });
+
+  $('#fabric-modal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget)
+    var index = button.data('index')
+    var owl = $('.owl-carousel').data('owlCarousel');
+    owl.goTo(index);
+  });
+
+  $('#fabric-modal').keyup(function(event) {
+    var owl = $('.owl-carousel').data('owlCarousel');
+    if (event.keyCode == 37) {
+      owl.prev();
+    }
+    if (event.keyCode == 39) {
+      owl.next();
+    }
+  });
+
+<% end %>

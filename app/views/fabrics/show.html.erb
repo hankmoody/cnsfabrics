@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <div class='owl-carousel'>
+      <div class='thumbnail'>
+        <%= image_tag @fabric.image.url(:big) %>
+      </div>
+      <div class='thumbnail'>
+        <%= image_tag @fabric.image.url(:original) %>
+        <p class='text-center'><%= link_to 'View Bigger', @fabric.image.url(:original) %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $('.owl-carousel').owlCarousel({
+    singleItem: true,
+    navigation: false,
+    lazyLoad: true,
+    autoHeight: true
+  });
+<% end %>

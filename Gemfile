@@ -14,6 +14,7 @@ gem 'dropbox-sdk', :require => "dropbox_sdk"
 gem 'kaminari'
 gem 'sidekiq'
 gem 'sidekiq-status', github: 'utgarda/sidekiq-status'
+gem 'owlcarousel-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'

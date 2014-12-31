@@ -8,6 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require owl.carousel
+ *= require owl.theme
  *= require_self
  *= require_tree .
  */
@@ -19,24 +21,75 @@ body {
   padding-top: 70px;
 }
 
-div.thumbnail
-{
+div.thumbnail {
   padding: 10px;
 }
 
-.card-thumbnail
-{
+.card-thumbnail {
   margin-bottom: 5px;
 }
 
-div.card-info
-{
+div.card-info {
   margin-left: -10px;
   margin-right: -10px;
   margin-top: 3px;
 }
 
-div.search-bar
-{
+div.search-bar {
   margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    width: 610px;
+  }
+
+  .modal-body {
+    padding: 0px 45px 15px 45px;
+  }
+}
+
+.modal-body {
+  padding-top: 35px;
+}
+
+.owl-theme .owl-controls .owl-buttons {
+
+  @media (max-width: 768px) {
+    display:none;
+  }
+
+  div {
+    position: absolute;
+    padding: 5px 9px;
+    opacity: 0.3;
+  }
+
+  i {
+    margin-top: 2px;
+  }
+
+  .owl-prev {
+    left: -40px;
+    top: 200px; 
+  }
+
+  .owl-next {
+    right: -40px;
+    top: 200px;
+  }
+}
+
+#fabric-modal {
+  .close {
+    position: absolute;
+    top: 7px;
+    right: 18px;
+    font-size: 25px;
+    opacity: 0.3;
+
+    @media (max-width: 768px) {
+      right: 14px;
+    }
+  }
 }
