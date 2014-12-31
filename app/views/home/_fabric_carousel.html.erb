@@ -7,7 +7,7 @@
           <% @fabrics.each do |fabric| %>
             <div>
               <div class='thumbnail'>
-                <%= image_tag fabric.image.url(:big) %>
+                <img class='lazyOwl' data-src='<%= fabric.image.url(:big) %>'>
               </div>
               <div class='row'>
                 <div class='col-xs-12'>
