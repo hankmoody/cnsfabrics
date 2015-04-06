@@ -92,6 +92,7 @@
         }
       });
       featherEditor.close();
+      $("#"+imageID).remove();
     },
     onError: function(errObj) {
       console.log(errObj.message);
@@ -112,6 +113,7 @@
 
   function prepareToCrop(imgID, imgUrl) {
     $('#hidden-elements').append("<img src='" +imgUrl+ "', id='" +imgID+ "' style='display:none;'>");
+    $("#"+imgID)[0].crossOrigin = 'Anonymous';
     launchEditor(imgID, null);
   }
 <% end %>

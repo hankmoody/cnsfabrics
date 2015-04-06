@@ -58,6 +58,7 @@ class FabricsController < ApplicationController
       fabric.image = URI.parse(new_image)
       fabric.save!
     end
+    render :json => { 'blah' => new_image }
   end
 
   def fabric_params
