@@ -1,5 +1,6 @@
 <%= render 'delete_confirmation' %>
 <%= render 'fabric_carousel' %>
+<%= render 'hidden_elements' %>
 <div class="fabric-thumbnails">
   <%= render 'search' %>
   <div class="row">
@@ -28,7 +29,7 @@
               <%=fabric.width %>"
             </div>
             <div class="col-xs-6 text-right">
-              <% if current_user && current_user.admin? %>
+              <% if admin? %>
                 <%= link_to '',
                   '#',
                   :style => 'text-decoration: none; color: maroon',

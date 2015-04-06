@@ -17,6 +17,7 @@ FactoryGirl.define do
     code "Cns1234"
     width 44
     quantity 105
-    image File.new(Rails.root + 'spec/support/images/test_image.png')
+    image File.new(Rails.root + 'spec/support/images/test_image.jpg')
+    original_image File.new(Rails.root + 'spec/support/images/test_image.jpg')
   end
 end

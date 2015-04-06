@@ -5,43 +5,20 @@
         <%= image_tag @fabric.image.url(:big) %>
       </div>
       <div class='thumbnail'>
-        <%= image_tag @fabric.image.url(:original), :id => 'editableImage' %>
-        <p class='text-center'><%= link_to 'View Bigger', @fabric.image.url(:original) %></p>
+        <%= image_tag @fabric.original_image.url(:original), :id => 'editableImage' %>
+        <p class='text-center'><%= link_to 'View Bigger', @fabric.original_image.url(:original) %></p>
       </div>
     </div>
   </div>
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <%= link_to 'Re-Crop Image', '#', :id => 'recrop-image' %>
   </div>
 </div>
 
-<script type="text/javascript" src="http://feather.aviary.com/imaging/v1/editor.js"></script>
 <%= javascript_tag do %>
   $('.owl-carousel').owlCarousel({
     singleItem: true,
     navigation: false,
     lazyLoad: true,
     autoHeight: true
-  });
-
-  var featherEditor = new Aviary.Feather({
-    apiKey: '265cb1f334822be2',
-    tools: ['draw', 'stickers'],
-    onSave: function(imageID, newURL) {
-      var img = document.getElementById(imageID);
-      img.src = newURL;
-    }
-  });
-
-  function launchEditor(id, src) {
-    featherEditor.launch({
-      image: id,
-      url: src
-    });
-    return false;
-  }
-
-  $('#recrop-image').click(function(event) {
-    launchEditor('editableImage', '<%= @fabric.image.url(:original) %>');
   });
 <% end %>

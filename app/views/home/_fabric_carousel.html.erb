@@ -7,7 +7,7 @@
           <% @fabrics.each do |fabric| %>
             <div>
               <div class='thumbnail'>
-                <img class='lazyOwl' data-src='<%= fabric.image.url(:big) %>'>
+                <img class='lazyOwl' data-src='<%= fabric.image.url(:big) %>', id='big_<%=fabric.id%>'>
               </div>
               <div class='row'>
                 <div class='col-xs-12'>
@@ -16,6 +16,9 @@
                       <col style='width:120px;'>
                       <col>
                     </colgroup>
+                    <% if admin? %>
+                      <tr><td></td><td><%= link_to "Re-Crop Image", '#', :id => 'recrop-image', :onClick => "prepareToCrop('#{fabric.id}', '#{fabric.original_image.url(:original)}')" %></td></tr>
+                    <% end %>
                     <tr><td>Direct Link</td><td><%= link_to fabric_url(fabric.id), fabric_path(fabric.id), :target => "_blank" %></td></tr>
                     <tr>
                       <td><strong>Design No.</strong></td>
@@ -34,6 +37,7 @@
   </div>
 </div>
 
+<script type="text/javascript" src="http://feather.aviary.com/imaging/v1/editor.js"></script>
 <%= javascript_tag do %>
   $('.owl-carousel').owlCarousel({
     singleItem: true,
@@ -62,4 +66,51 @@
     }
   });
 
+  var featherEditor = new Aviary.Feather({
+    apiKey: '265cb1f334822be2',
+    tools: ['brightness', 'contrast', 'saturation', 'sharpness'],
+    onSaveButtonClicked: function(){
+      dimensions = featherEditor.getImageDimensions();
+      if (dimensions.width < 600 || dimensions.height < 500) {
+        alert('Width has to be greater than 600px and height greater than 500px');
+        featherEditor.close();
+        return false;
+      }
+    },
+    onSave: function(imageID, newURL) {
+      var ajaxUrl = "/fabrics/" +imageID+ "/crop";
+      $('#big_'+imageID).attr('src', newURL);
+
+      // Make an ajax call and provide the new image URL.
+      $.ajax({
+        type: "POST",
+        url: ajaxUrl,
+        data: { 'new_image': newURL },
+        dataType: 'json',
+        success: function(data) {
+        }
+      });
+      featherEditor.close();
+    },
+    onError: function(errObj) {
+      console.log(errObj.message);
+    }
+  });
+
+  function launchEditor(id, src) {
+    featherEditor.launch({
+      image: id,
+      url: src,
+      fileFormat: 'jpg',
+      displayImageSize: true,
+      forceCropPreset: ['600px Wide', '6:5'],
+      forceCropMessage: 'Please make sure the final image is AT LEAST 600px wide!'
+    });
+    return false;
+  }
+
+  function prepareToCrop(imgID, imgUrl) {
+    $('#hidden-elements').append("<img src='" +imgUrl+ "', id='" +imgID+ "' style='display:none;'>");
+    launchEditor(imgID, null);
+  }
 <% end %>

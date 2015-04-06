@@ -16,7 +16,8 @@ for i in 0..40
     code: "Cns #{i+100}",
     width: rand(20..100),
     quantity: rand(500..10000),
-    image: URI.parse("http://placehold.it/#{rand(600..1000)}x#{rand(500..900)}.png")
+    image: URI.parse("http://placehold.it/#{rand(600..1000)}x#{rand(500..900)}.png"),
+    original_image: URI.parse("http://placehold.it/#{rand(600..1000)}x#{rand(500..900)}.png")
   })
 end
 
