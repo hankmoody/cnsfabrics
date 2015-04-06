@@ -47,6 +47,19 @@ class FabricsController < ApplicationController
     end
   end
 
+  def crop
+    fabric = Fabric.find(params[:id])
+    new_image = params[:new_image]
+    dimensions = FastImage.size(new_image)
+    if dimensions[0] < 600
+      render :status => 500, :json => { 'message' => 'Image must be at least 600 px wide!' }
+    else
+      fabric.is_cropped = true
+      fabric.image = URI.parse(new_image)
+      fabric.save!
+    end
+  end
+
   def fabric_params
     params.require(:fabric).permit(:code, :width, :quantity)
   end

@@ -28,6 +28,7 @@ class AddFabricWorker
     unless image.nil?
       image.open()
       record["image"] = image
+      record["original_image"] = image
     end
     image
   end

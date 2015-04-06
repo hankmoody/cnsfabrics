@@ -4,6 +4,7 @@ Myapp::Application.routes.draw do
   get "/admin" => 'home#admin'
   post "/admin/file" => 'fabrics#excel_update'
   get "admin/fetch" => 'fabrics#fetch'
+  post "fabrics/:id/crop" => 'fabrics#crop'
   resources :fabrics
 
   # The priority is based upon order of creation: first created -> highest priority.
