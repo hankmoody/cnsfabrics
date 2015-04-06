@@ -112,8 +112,9 @@
   }
 
   function prepareToCrop(imgID, imgUrl) {
-    $('#hidden-elements').append("<img src='" +imgUrl+ "', id='" +imgID+ "' style='display:none;'>");
+    $('#hidden-elements').append("<img id='" +imgID+ "' style='display:none;'>");
     $("#"+imgID)[0].crossOrigin = 'Anonymous';
+    $("#"+imgID)[0].src = imgUrl;
     launchEditor(imgID, null);
   }
 <% end %>
