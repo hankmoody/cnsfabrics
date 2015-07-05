@@ -20,7 +20,14 @@
       </div>
     </div>
     <div class="col-md-4 col-xs-6">
-      <%= submit_tag "Search", :class => 'btn btn-default', :name => nil %> 
+      <%= submit_tag "Search", :id => 'search_button', :class => 'btn btn-default', :name => nil %> 
     </div>
   <% form_tag %>
 </div>
+
+<%= javascript_tag do %>
+  $('#search_button').click(function(){
+    var search_term = $('#search_field').val();
+    mixpanel.track('Searched', {value: search_term});
+  });
+<% end %>

@@ -12,7 +12,7 @@
     <% @fabrics.each_with_index do |fabric, index| %>
       <div class="col-xs-6 col-sm-4 col-md-3">
         <div class="thumbnail box-shadow">
-          <a href="#" data-toggle='modal' data-target='#fabric-modal' data-index='<%= index %>'>
+          <a href="#" data-toggle='modal' data-target='#fabric-modal' data-index='<%= index %>' data-code='<%= fabric.code %>'>
             <% img = fabric.image.nil? ? 'http://fakeimg.pl/300x250/' : fabric.image.url(:thumbnail) %>
             <%= image_tag img, :class => 'card-thumbnail' %>
           </a>

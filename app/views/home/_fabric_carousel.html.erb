@@ -55,6 +55,9 @@
     var index = button.data('index')
     var owl = $('.owl-carousel').data('owlCarousel');
     owl.goTo(index);
+
+    var code = button.data('code');
+    mixpanel.track('Image Enlarged', {code: code});
   });
 
   $('#fabric-modal').keyup(function(event) {

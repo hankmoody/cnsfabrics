@@ -24,6 +24,13 @@
     var url = button.data('url')
     var modal = $(this)
     modal.find('.modal-title').text('Are you sure you want to delete #' + code + '?')
-    modal.find('.btn-yes').attr('href', url)
-  })
+    modal.find('.btn-yes').attr('href', url);
+    modal.find('.btn-yes').attr('data-code', code);
+  });
+
+  $('.btn-yes').click(function(event) {
+    var button = $(event.currentTarget);
+    var code = button.data('code');
+    mixpanel.track('Image Deleted', {code: code});
+  });
 <% end %>

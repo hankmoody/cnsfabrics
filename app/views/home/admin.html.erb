@@ -7,8 +7,14 @@
         <%= file_field_tag :excel_file, accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' %>
       </div>
       <div class='form-group'>
-        <%= submit_tag 'Submit', class: 'btn btn-default' %>
+        <%= submit_tag 'Submit', class: 'btn btn-default', id: 'submit-file' %>
       </div>
     <% end %>
   </div>
 </div>
+
+<%= javascript_tag do %>
+  $('#submit-file').click(function(){
+    mixpanel.track('Design File Submitted');
+  });
+<% end %>
