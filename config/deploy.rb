@@ -41,6 +41,7 @@ namespace :deploy do
   task :symlink_shared do
     on roles(:all) do
       execute "ln -nfs #{shared_path}/config/dropbox.yml #{release_path}/config/dropbox.yml"
+      execute "ln -nfs #{shared_path}/config/mixpanel.yml #{release_path}/config/mixpanel.yml"
       execute "ln -nfs #{shared_path}/config/aws.yml #{release_path}/config/aws.yml"
     end
   end

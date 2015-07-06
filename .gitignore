@@ -4,4 +4,5 @@ tmp
 .sass-cache/
 config/aws.yml
 config/dropbox.yml
+config/mixpanel.yml
 public/system/*
