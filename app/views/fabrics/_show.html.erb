@@ -1,0 +1,26 @@
+<div class='row' id="show-<%=fabric.id%>">
+  <div class='col-xs-12'>
+    <table class='table table-striped'>
+      <colgroup>
+        <col style='width:120px;'>
+        <col>
+      </colgroup>
+      <% if admin? %>
+        <tr>
+          <td>Controls</td>
+          <td>
+            <span><%= link_to "Edit Fabric", edit_fabric_path(fabric), :class => 'edit-fabric', remote: true %></span>
+            <span><%= link_to "Re-Crop", '#', :class => 'recrop-image', :onClick => "prepareToCrop('#{fabric.id}', '#{fabric.original_image.url(:original)}')" %></span>
+          </td>
+        </tr>
+      <% end %>
+      <tr><td>Direct Link</td><td><%= link_to fabric_url(fabric.id), fabric_path(fabric.id), :target => "_blank" %></td></tr>
+      <tr>
+        <td><strong>Design No.</strong></td>
+        <td class='text-uppercase'><strong>#<%= fabric.code %><strong></td>
+      </tr>
+      <tr><td>Quantity</td><td><%= fabric.quantity %> mts</td></tr>
+      <tr><td>Width</td><td><%= fabric.width %>"</td></tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<% if @fabric.errors.any? %>
+  <% @fabric.errors.full_messages.each do |message| %>
+    $('#edit-<%=@fabric.id%> .alert').append("<li class='alert-danger'><%= message.html_safe %></li>")
+  <% end %>
+<% else %>
+  $('#edit-<%= @fabric.id %>').remove();
+  $('#modal-<%= @fabric.id %>').append("<%= escape_javascript(render 'show', fabric: @fabric) %>")
+<% end %>
+
+

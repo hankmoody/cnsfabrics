@@ -1,0 +1,3 @@
+$('#show-<%= @fabric.id %>').remove();
+$('#modal-<%= @fabric.id %>').append("<%= escape_javascript(render 'edit') %>")
+mixpanel.track('Fabric editted', { code: '<%= @fabric.code %>' })

@@ -1,0 +1,20 @@
+<%= form_for @fabric, remote: true do |f| %>
+  <div class='row' id='edit-<%=@fabric.id%>'>
+    <ul class="alert"></ul>
+    <div class='col-xs-12'>
+      <table class='table table-striped'>
+        <colgroup>
+          <col style='width:120px;'>
+          <col>
+        </colgroup>
+        <tr>
+          <td><strong>Design No.</strong></td>
+          <td class='text-uppercase'><strong>#<%= f.text_field :code %><strong></td>
+        </tr>
+        <tr><td>Quantity</td><td><%= f.text_field :quantity %> mts</td></tr>
+        <tr><td>Width</td><td><%= f.text_field :width %>"</td></tr>
+        <tr><td></td><td><%= f.submit class: "btn btn-primary" %></td></tr>
+      </table>
+    </div>
+  </div>
+<% end %>

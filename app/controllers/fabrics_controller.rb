@@ -5,6 +5,15 @@ class FabricsController < ApplicationController
     @fabric = Fabric.find(params[:id])
   end
 
+  def edit
+    @fabric = Fabric.find(params[:id])
+  end
+
+  def update
+    @fabric = Fabric.find(params[:id])
+    @fabric.update_attributes(fabric_params)
+  end
+
   def destroy
     Fabric.find(params[:id]).destroy
     redirect_to root_path
