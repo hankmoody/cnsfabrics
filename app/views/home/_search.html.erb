@@ -6,6 +6,13 @@
         Go Back
       </a>
     </div>
+    <div class="col-xs-6">
+      <a href='<%= "whatsapp://send?text=" + request.original_url %>'
+         data-action='share/whatsapp/share' class='btn btn-default' style='color: #555'>
+        <span class='glyphicon'></span>
+        Share to Whatsapp
+      </a>
+    </div>
   </div>
 <% end %>
 
