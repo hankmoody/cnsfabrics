@@ -16,6 +16,7 @@ gem 'sidekiq'
 gem 'sidekiq-status', github: 'utgarda/sidekiq-status'
 gem 'owlcarousel-rails'
 gem 'fastimage'
+gem 'font-awesome-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'

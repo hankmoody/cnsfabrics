@@ -10,6 +10,7 @@
  *
  *= require owl.carousel
  *= require owl.theme
+ *= require font-awesome
  *= require_self
  *= require_tree .
  */
@@ -96,4 +97,15 @@ div.search-bar {
 
 .recrop-image {
   margin-left: 20px;
+}
+
+.whatsapp {
+  background-color: #43d854;
+  border-color: #43d854;
+  color: #fff;
+  &:hover {
+    background-color: #43d854;
+    border-color: #43d854;
+    color: #fff;
+  }
 }
