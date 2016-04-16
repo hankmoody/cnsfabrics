@@ -7,8 +7,7 @@
       </a>
     </div>
     <div class="col-xs-6">
-      <a href='<%= "whatsapp://send?text=" + request.original_url %>'
-         data-action='share/whatsapp/share' class='btn btn-default' style='color: #555'>
+      <a href='<%= "whatsapp://send?text=" + CGI::escape(request.original_url) %>' class='btn btn-default' style='color: #555'>
         <span class='glyphicon'></span>
         Share to Whatsapp
       </a>
@@ -27,7 +26,7 @@
       </div>
     </div>
     <div class="col-md-4 col-xs-6">
-      <%= submit_tag "Search", :id => 'search_button', :class => 'btn btn-default', :name => nil %> 
+      <%= submit_tag "Search", :id => 'search_button', :class => 'btn btn-default', :name => nil %>
     </div>
   <% form_tag %>
 </div>

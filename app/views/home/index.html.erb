@@ -1,6 +1,10 @@
 <%= render 'delete_confirmation' %>
 <%= render 'fabric_carousel' %>
 <%= render 'hidden_elements' %>
+<% content_for :head do %>
+  <meta property="og:image" content="<%= meta_tag_image %>">
+<% end %>
+
 <div class="fabric-thumbnails">
   <%= render 'search' %>
   <div class="row">

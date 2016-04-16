@@ -2,7 +2,10 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width">
-  <title>Checks 'n' Stripes</title>
+  <meta property="og:title" content="Cnsfabrics">
+  <meta property="og:description" content="Online gallery of latest desgins">
+  <title>Cnsfabrics</title>
+  <%= yield :head %>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
