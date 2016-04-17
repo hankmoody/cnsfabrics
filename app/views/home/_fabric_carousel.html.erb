@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <div class='owl-carousel'>
+        <div class='owl-carousel' data-refresh-page = 'false'>
           <% @fabrics.each do |fabric| %>
             <div id='modal-<%= fabric.id %>'>
               <div class='thumbnail'>
@@ -39,6 +39,11 @@
 
     var code = button.data('code');
     mixpanel.track('Image Enlarged', {code: code});
+  });
+
+  $('#fabric-modal').on('hidden.bs.modal', function (event) {
+    if ($('.owl-carousel').data('refresh-page') == 'true')
+      location.reload();
   });
 
   $('#fabric-modal').keyup(function(event) {
@@ -97,6 +102,7 @@
   }
 
   function prepareToCrop(imgID, imgUrl) {
+    $('.owl-carousel').data('refresh-page', 'true')
     $('#hidden-elements').append("<img id='" +imgID+ "' style='display:none;'>");
     $("#"+imgID)[0].crossOrigin = 'Anonymous';
     $("#"+imgID)[0].src = imgUrl;

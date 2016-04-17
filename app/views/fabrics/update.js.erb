@@ -5,6 +5,7 @@
 <% else %>
   $('#edit-<%= @fabric.id %>').remove();
   $('#modal-<%= @fabric.id %>').append("<%= escape_javascript(render 'show', fabric: @fabric) %>")
+  $('.owl-carousel').data('refresh-page', 'true')
 <% end %>
 
 
