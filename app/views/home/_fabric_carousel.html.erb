@@ -43,10 +43,11 @@
 
   $('#fabric-modal').keyup(function(event) {
     var owl = $('.owl-carousel').data('owlCarousel');
-    if (event.keyCode == 37) {
+    var enableKeyboard = $('.owl-carousel').find('.disable-keyboard-input').length === 0
+    if (event.keyCode == 37 && enableKeyboard) {
       owl.prev();
     }
-    if (event.keyCode == 39) {
+    if (event.keyCode == 39 && enableKeyboard) {
       owl.next();
     }
   });
