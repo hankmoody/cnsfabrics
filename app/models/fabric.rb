@@ -73,17 +73,12 @@ class Fabric
   end
 
   def self.search (search)
-    search_conditions = Regexp.new "#{search}"
+    search_conditions = Regexp.new "#{search.downcase}"
 
-    fabric_results = Fabric.any_of({
-      :code => search_conditions
-    }).order_by(:created_at.desc)
-
-    tag_results = Tag.any_of({
-      :name => search_conditions
-    })
-
-    (fabric_results + (tag_results.collect {|t| t.fabrics}).flatten).uniq
+    fabric_results = Fabric.any_of({ :code => search_conditions })
+    tag_results = Tag.any_of({ :name => search_conditions })
+    results = fabric_results + (tag_results.collect {|t| t.fabrics}).flatten
+    results.uniq.sort_by(&:updated_at).reverse
   end
 
 end

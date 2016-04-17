@@ -25,4 +25,27 @@ describe Fabric do
     expect(fabric.code).to eq "cns 123"
   end
 
+  it "should return search results in reverse chron for updated date" do
+    fabric1 = create(:fabric, :code => "CNS 123", :tag_list => "checks, voile")
+    create(:fabric, :code => "CNS 124", :tag_list => "chambray, voile")
+    fabric3 = create(:fabric, :code => "CNS 125", :tag_list => "checks, stripes")
+
+    fabric1.update_attributes(:width => 27)
+    fabric_list = Fabric.search('checks')
+    expect(fabric_list).to be == [fabric1, fabric3]
+
+    fabric3.update_attributes(:width => 27)
+    fabric_list = Fabric.search('checks')
+    expect(fabric_list).to be == [fabric3, fabric1]
+  end
+
+  it "should perform case insensitive search " do
+    fabric1 = create(:fabric, :code => "CNS 123", :tag_list => "checks, voile")
+    create(:fabric, :code => "CNS 124", :tag_list => "chambray, voile")
+    fabric3 = create(:fabric, :code => "CNS 125", :tag_list => "checks, stripes")
+
+    fabric_list = Fabric.search('ChECks')
+    expect(fabric_list).to be == [fabric3, fabric1]
+  end
+
 end
