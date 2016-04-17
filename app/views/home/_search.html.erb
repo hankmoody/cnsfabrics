@@ -36,4 +36,9 @@
     var search_term = $('#search_field').val();
     mixpanel.track('Searched', {value: search_term});
   });
+
+  $('.whatsapp').click(function(){
+    var search_term = $('#search_field').val();
+    mixpanel.track('Shared on whatsapp', {value: search_term});
+  });
 <% end %>
