@@ -261,6 +261,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    select2-rails (4.0.1.1)
+      thor (~> 0.14)
     sidekiq (3.0.2)
       celluloid (>= 0.15.2)
       connection_pool (>= 2.0.0)
@@ -347,6 +349,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   sdoc
+  select2-rails
   sidekiq
   sidekiq-status!
   therubyracer

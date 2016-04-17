@@ -4,15 +4,16 @@
     <div class='col-xs-12'>
       <table class='table table-striped'>
         <colgroup>
-          <col style='width:120px;'>
-          <col>
+          <col class='col-xs-3'>
+          <col class='col-xs-9'>
         </colgroup>
         <tr>
-          <td><strong>Design No.</strong></td>
+          <td><strong>Design</strong></td>
           <td class='text-uppercase'><strong>#<%= f.text_field :code %><strong></td>
         </tr>
         <tr><td>Quantity</td><td><%= f.text_field :quantity %> mts</td></tr>
         <tr><td>Width</td><td><%= f.text_field :width %>"</td></tr>
+        <tr><td>Tags</td><td><%= f.select :tag_names, Tag.order_by('name ASC').collect {|t| [t.name, t.name]}, {}, :multiple => true, :class => 'tags-edit' %></td></tr>
         <tr><td></td><td><%= f.submit class: "btn btn-primary" %></td></tr>
       </table>
     </div>

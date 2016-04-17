@@ -9,15 +9,18 @@
 
 Fabric.delete_all
 User.delete_all
+Tag.delete_all
 
+tags = Tag.get_tags("checks, stripes, voile, madras, chambray")
 fabric_array = []
 for i in 0..40
   fabric_array.push({
     code: "Cns #{i+100}",
     width: rand(20..100),
     quantity: rand(500..10000),
-    image: URI.parse("http://placehold.it/#{rand(600..1000)}x#{rand(500..900)}.png"),
-    original_image: URI.parse("http://placehold.it/#{rand(600..1000)}x#{rand(500..900)}.png")
+    tags: [tags[rand(0..4)], tags[rand(0..4)]],
+    image: URI.parse("https://placehold.it/#{rand(600..1000)}x#{rand(500..900)}.png"),
+    original_image: URI.parse("https://placehold.it/#{rand(600..1000)}x#{rand(500..900)}.png")
   })
 end
 

@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require owl.carousel
+//= require select2
 //= require helpers
 //= require_tree .

@@ -7,6 +7,7 @@ class Fabric
   field :code, type: String
   field :quantity, type: Integer
   field :width, type: Integer
+  has_and_belongs_to_many :tags
   attr_accessor :is_cropped
 
   before_validation :drop_case
@@ -48,6 +49,23 @@ class Fabric
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
   validates_attachment_content_type :original_image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
+  def tag_list=(list)
+    self.tags = Tag.get_tags(list)
+  end
+
+  def tag_list
+    tag_names.join(', ')
+  end
+
+  def tag_names=(names)
+    self.tags = []
+    names.each { |n| self.tags << Tag.find_or_create_by(:name => n) unless n.empty? }
+  end
+
+  def tag_names
+    self.tags.pluck(:name)
+  end
+
   protected
 
   def drop_case
@@ -56,9 +74,16 @@ class Fabric
 
   def self.search (search)
     search_conditions = Regexp.new "#{search}"
-    Fabric.any_of({
+
+    fabric_results = Fabric.any_of({
       :code => search_conditions
+    }).order_by(:created_at.desc)
+
+    tag_results = Tag.any_of({
+      :name => search_conditions
     })
+
+    (fabric_results + (tag_results.collect {|t| t.fabrics}).flatten).uniq
   end
 
 end

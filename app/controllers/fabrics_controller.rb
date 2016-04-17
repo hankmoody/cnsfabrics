@@ -71,6 +71,6 @@ class FabricsController < ApplicationController
   end
 
   def fabric_params
-    params.require(:fabric).permit(:code, :width, :quantity)
+    params.require(:fabric).permit(:code, :width, :quantity, :tag_list, :tag_names => [])
   end
 end

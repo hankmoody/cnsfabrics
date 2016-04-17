@@ -17,7 +17,12 @@ FactoryGirl.define do
     code "Cns1234"
     width 44
     quantity 105
+    tag_list "checks, stripes"
     image File.new(Rails.root + 'spec/support/images/test_image.jpg')
     original_image File.new(Rails.root + 'spec/support/images/test_image.jpg')
+  end
+
+  factory :tag do
+    name "checks"
   end
 end

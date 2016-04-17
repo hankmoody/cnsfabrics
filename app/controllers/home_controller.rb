@@ -4,11 +4,11 @@ class HomeController < ApplicationController
   def index
     @search = !params[:search].nil? && !params[:search].empty?
     if ! @search
-      @fabrics = Fabric
+      @fabrics = Fabric.order_by(:created_at.desc)
     else
-      @fabrics = Fabric.search(params[:search])
+      @fabrics = Kaminari.paginate_array(Fabric.search(params[:search]))
     end
-    @fabrics = @fabrics.order_by(:created_at.desc).page(params[:page]).per(24)
+    @fabrics = @fabrics.page(params[:page]).per(24)
   end
 
   def admin

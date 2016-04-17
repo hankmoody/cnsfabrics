@@ -1,3 +1,4 @@
 $('#show-<%= @fabric.id %>').remove();
 $('#modal-<%= @fabric.id %>').append("<%= escape_javascript(render 'edit') %>")
+$('.tags-edit').select2({ tags: true })
 mixpanel.track('Fabric editted', { code: '<%= @fabric.code %>' })

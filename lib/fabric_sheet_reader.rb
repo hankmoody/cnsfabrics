@@ -14,6 +14,7 @@ class FabricSheetReader
         record[columns[j].to_sym] = @file.cell(i,j)
       end
       validate_record record, i
+      record[:tag_list] = record.delete :tags
       records << record
     end
     records
@@ -43,7 +44,7 @@ class FabricSheetReader
       raise 'Maximum of 100 rows allowed'
     end
 
-    if @file.last_column != 3
+    if @file.last_column != columns.count
       raise "Invalid number of columns. Please make sure column titles are #{columns.values.join(', ')}"
     end
   end
@@ -61,7 +62,8 @@ class FabricSheetReader
     {
       1 => 'code',
       2 => 'width',
-      3 => 'quantity'
+      3 => 'quantity',
+      4 => 'tags'
     }
   end
 

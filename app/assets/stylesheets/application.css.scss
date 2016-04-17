@@ -11,6 +11,8 @@
  *= require owl.carousel
  *= require owl.theme
  *= require font-awesome
+ *= require select2
+ *= require select2-bootstrap
  *= require_self
  *= require_tree .
  */
@@ -108,4 +110,8 @@ div.search-bar {
     border-color: #43d854;
     color: #fff;
   }
+}
+
+.tags-edit {
+  width: 100%;
 }

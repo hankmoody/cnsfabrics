@@ -11,12 +11,14 @@ describe 'Fabric Sheet Reader' do
       {
         :code => "cns 123",
         :width => 44,
-        :quantity => 2000
+        :quantity => 2000,
+        :tag_list => "checks, stripes"
       },
       {
         :code => "cns 245",
         :width => 55,
-        :quantity => 3500
+        :quantity => 3500,
+        :tag_list => "stripes, voile"
       }
     ]
     expect(records).to eq(result)
@@ -26,6 +28,7 @@ describe 'Fabric Sheet Reader' do
     expect(fabric.code).to eq(record[:code])
     expect(fabric.width).to eq(record[:width])
     expect(fabric.quantity).to eq(record[:quantity])
+    expect(fabric.tag_list).to eq(record[:tag_list])
   end
 
   it 'fails if number of records are out of bounds' do
