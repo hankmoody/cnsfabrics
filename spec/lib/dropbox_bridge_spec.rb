@@ -18,7 +18,8 @@ describe 'Dropbox Bridge' do
     @client.put_file(@test_file_path1, File.open(@file_path, 'r'))
     @test_file_path2 = @test_root + 'cnstest 245.png'
     @client.put_file(@test_file_path2, File.open(@file_path, 'r'))
-
+    @test_file_path3 = @test_root + 'cnstest 2452.png'
+    @client.put_file(@test_file_path3, File.open(@file_path, 'r'))
     @db = DropboxBridge.new
   end
 
@@ -43,5 +44,12 @@ describe 'Dropbox Bridge' do
   it "raises an error if more than one file is found" do
     @db = DropboxBridge.new
     expect{@db.find_file 'cnstest'}.to raise_error
+  end
+
+  it "accurately distinguishes between files with same prefix" do
+    path = @db.find_file 'cnstest 245'
+    expect(path).to eq(@test_file_path2)
+    path = @db.find_file 'cnstest 2452'
+    expect(path).to eq(@test_file_path3)
   end
 end

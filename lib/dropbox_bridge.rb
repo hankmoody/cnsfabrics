@@ -15,6 +15,7 @@ class DropboxBridge
 
   def find_file (file)
     path = nil
+    file = add_extension_delimiter(file)
     results = @client.search(@root_path, file)
     if results.empty? || results.nil? || results.count > 1
       raise "#{file} not found in the images folder"
@@ -24,4 +25,9 @@ class DropboxBridge
     path
   end
 
+  private
+
+  def add_extension_delimiter (file)
+    file + '.' if file.count('.') == 0
+  end
 end
