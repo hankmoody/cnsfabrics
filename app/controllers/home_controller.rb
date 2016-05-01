@@ -12,8 +12,10 @@ class HomeController < ApplicationController
   end
 
   def madrascheck
+    @site_title = 'Madras Checks'
     @fabrics = Kaminari.paginate_array(Fabric.search('madras'))
     @fabrics = @fabrics.page(params[:page]).per(24)
+    render 'index'
   end
 
   def admin

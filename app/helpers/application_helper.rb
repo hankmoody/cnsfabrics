@@ -24,4 +24,8 @@ module ApplicationHelper
     current_user && current_user.admin?
   end
 
+  def site_title
+    return 'Cnsfabrics' if @site_title.nil?
+    return @site_title
+  end
 end
