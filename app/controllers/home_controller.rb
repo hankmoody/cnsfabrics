@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, only: [:admin]
 
   def index
     @search = !params[:search].nil? && !params[:search].empty?
