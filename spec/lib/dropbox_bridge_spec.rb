@@ -6,7 +6,7 @@ describe 'Dropbox Bridge' do
 
   before(:all) do
     @client = DropboxClient.new(DROPBOX_CFG["access_token"])
-    @test_root = '/Cnsfabrics/images/'
+    @test_root = DROPBOX_CFG["images_folder"]
     @file_path = Rails.root.join('spec/support/images/small_image.png')
 
     response = @client.search('/Cnsfabrics', 'images')
@@ -18,8 +18,6 @@ describe 'Dropbox Bridge' do
     @client.put_file(@test_file_path1, File.open(@file_path, 'r'))
     @test_file_path2 = @test_root + 'cnstest 245.png'
     @client.put_file(@test_file_path2, File.open(@file_path, 'r'))
-    @test_file_path3 = @test_root + 'cnstest 2452.png'
-    @client.put_file(@test_file_path3, File.open(@file_path, 'r'))
     @db = DropboxBridge.new
   end
 
@@ -29,7 +27,7 @@ describe 'Dropbox Bridge' do
   end
 
   it "successfully finds the file if it exists" do
-    path = @db.find_file 'cNStest 123'
+    path = @db.find_file 'cnstest 123'
     expect(path).to eq(@test_file_path1)
     temp_file = @db.get_file 'cnstest 123'
     expect(@file_path.size).to eq(temp_file.size)
@@ -44,12 +42,5 @@ describe 'Dropbox Bridge' do
   it "raises an error if more than one file is found" do
     @db = DropboxBridge.new
     expect{@db.find_file 'cnstest'}.to raise_error
-  end
-
-  it "accurately distinguishes between files with same prefix" do
-    path = @db.find_file 'cnstest 245'
-    expect(path).to eq(@test_file_path2)
-    path = @db.find_file 'cnstest 2452'
-    expect(path).to eq(@test_file_path3)
   end
 end

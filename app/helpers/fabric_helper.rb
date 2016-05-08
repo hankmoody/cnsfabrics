@@ -1,8 +1,7 @@
 module FabricHelper
 
   def process_record (record)
-    normalize record
-    fabric = Fabric.find_by code: record[:code]
+    fabric = Fabric.find_by code: record[:code].downcase
     if fabric.nil?
       job_id = AddFabricWorker.perform_async(record)
       @jobs[job_id] = record[:code]
@@ -18,10 +17,6 @@ module FabricHelper
     else
       @update_status[code] = log_status('danger', 'Failed with ' + fabric.errors.messages.inspect)
     end
-  end
-
-  def normalize (record)
-    record[:code] = record[:code].downcase
   end
 
   def log_status (status, message)

@@ -47,10 +47,10 @@
   var jobPoller = function(jobs) {
 
     function getIdFrom(code) {
-      return '#'+code.replace(' ', '_');
+      return '#'+code.replace(/\s+/g, '_');
     }
 
-    function updateRow(code, data) { 
+    function updateRow(code, data) {
       codeId = getIdFrom(code);
       $(codeId+' td.job-status').text(data.message);
       $(codeId).removeClass().addClass(data.status);

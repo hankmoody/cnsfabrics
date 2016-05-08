@@ -7,7 +7,7 @@ describe Fabric do
   end
 
   it "should require an image" do
-    fabric = build(:fabric, :image => nil)
+    fabric = build(:fabric, :original_image => nil)
     expect(fabric).not_to be_valid
   end
 

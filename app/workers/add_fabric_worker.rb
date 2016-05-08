@@ -45,6 +45,7 @@ class AddFabricWorker
   end
 
   def log_status(status, message)
+    logger.info message
     store status_code: status
     store status_message: message
   end

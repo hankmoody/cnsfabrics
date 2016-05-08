@@ -2,7 +2,7 @@ class DropboxBridge
 
   def initialize
     @client = DropboxClient.new(DROPBOX_CFG["access_token"])
-    @root_path = '/Cnsfabrics/images/'
+    @root_path = DROPBOX_CFG["images_folder"]
   end
 
   def get_file (file)

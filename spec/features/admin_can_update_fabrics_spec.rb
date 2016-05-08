@@ -2,23 +2,20 @@ require 'rails_helper'
 
 feature 'Admin' do
 
-  before(:all) do
-    user = create(:admin)
+  let!(:user) { create(:admin) }
+
+  scenario "can update fabrics using valid excel sheet" do
     visit new_user_session_path
     fill_in "Email", :with => user.email
     fill_in "Password", :with => user.password
     click_button "Sign in"
-  end
-
-  scenario "can update fabrics using valid excel sheet" do
     click_link 'Admin Panel'
     attach_file 'Excel file', 'spec/support/files/sheet_basic_valid.xlsx'
     click_button 'Submit'
-    expect(page).to have_content 'cns 123 successfully added!'
-    expect(page).to have_content 'cns 245 successfully added!'
+    fabric = Fabric.find_by code: 'test 123'
+    expect(fabric).to_not be_nil
+    fabric = Fabric.find_by code: 'test 245'
+    expect(fabric).to_not be_nil
   end
 
-  scenario "can see errors for invalid records" do
-    pending
-  end
 end

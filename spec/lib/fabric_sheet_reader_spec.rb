@@ -9,13 +9,13 @@ describe 'Fabric Sheet Reader' do
     records = sheet_reader.read_fabric_data
     result = [
       {
-        :code => "cns 123",
+        :code => "test 123",
         :width => 44,
         :quantity => 2000,
         :tag_list => "checks, stripes"
       },
       {
-        :code => "cns 245",
+        :code => "test 245",
         :width => 55,
         :quantity => 3500,
         :tag_list => "stripes, voile"

@@ -11,7 +11,7 @@ class Fabric
   attr_accessor :is_cropped
 
   before_validation :drop_case
-  before_save :reset_image
+  before_validation :reset_image
 
   paperclip_options = {
     :styles =>
