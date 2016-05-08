@@ -27,7 +27,6 @@ class AddFabricWorker
     image = get_image_from_dropbox record
     unless image.nil?
       image.open()
-      record["image"] = image
       record["original_image"] = image
     end
     image

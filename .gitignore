@@ -6,3 +6,4 @@ config/aws.yml
 config/dropbox.yml
 config/mixpanel.yml
 public/system/*
+.ruby-version

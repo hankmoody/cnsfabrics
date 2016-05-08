@@ -1,12 +1,12 @@
 <%= form_for @fabric, remote: true do |f| %>
   <div class='row disable-keyboard-input' id='edit-<%=@fabric.id%>'>
-    <ul class="alert"></ul>
     <div class='col-xs-12'>
       <table class='table table-striped'>
         <colgroup>
           <col class='col-xs-3'>
           <col class='col-xs-9'>
         </colgroup>
+        <tr><td>Image</td><td><%= f.file_field :original_image %> </td></tr>
         <tr>
           <td><strong>Design</strong></td>
           <td class='text-uppercase'><strong>#<%= f.text_field :code %><strong></td>
@@ -16,6 +16,7 @@
         <tr><td>Tags</td><td><%= f.select :tag_names, Tag.order_by('name ASC').collect {|t| [t.name, t.name]}, {}, :multiple => true, :class => 'tags-edit' %></td></tr>
         <tr><td></td><td><%= f.submit class: "btn btn-primary" %></td></tr>
       </table>
+      <ul class="alert"></ul>
     </div>
   </div>
 <% end %>

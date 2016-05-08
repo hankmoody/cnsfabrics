@@ -225,6 +225,7 @@ GEM
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
     ref (1.0.5)
+    remotipart (1.2.1)
     roo (1.13.2)
       nokogiri
       rubyzip
@@ -345,6 +346,7 @@ DEPENDENCIES
   mongoid-paperclip
   owlcarousel-rails
   rails (= 4.1)
+  remotipart
   roo
   rspec-rails
   sass-rails

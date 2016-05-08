@@ -11,6 +11,7 @@ class Fabric
   attr_accessor :is_cropped
 
   before_validation :drop_case
+  before_save :reset_image
 
   paperclip_options = {
     :styles =>
@@ -67,6 +68,12 @@ class Fabric
   end
 
   protected
+
+  def reset_image
+    if self.original_image_updated_at_changed?
+      self.image = original_image
+    end
+  end
 
   def drop_case
     self.code = self.code.downcase unless self.code.nil?

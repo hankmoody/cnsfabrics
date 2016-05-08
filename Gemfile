@@ -18,6 +18,7 @@ gem 'owlcarousel-rails'
 gem 'fastimage'
 gem 'font-awesome-rails'
 gem 'select2-rails'
+gem 'remotipart'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
